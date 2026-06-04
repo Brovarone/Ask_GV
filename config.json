@@ -1,0 +1,107 @@
+{
+  "input": {
+    "ignore_patterns": [
+      ".git/*",
+      ".github/*",
+      "node_modules/*",
+      "venv/*",
+      ".venv/*",
+      "dist/*",
+      "build/*",
+      "site/*",
+      "*.png",
+      "*.jpg",
+      "*.jpeg",
+      "*.gif",
+      "*.webp",
+      "*.svg",
+      "*.pdf",
+      "*.zip",
+      "*.7z",
+      "*.mp3",
+      "*.mp4"
+    ]
+  },
+  "summary": {
+    "provider": "nvidia",
+    "model": "meta/llama-3.1-70b-instruct",
+    "gemini_use_files_api": false
+  },
+  "retrieval": {
+    "chunk_size": 2200,
+    "chunk_overlap": 250,
+    "top_k": 8,
+    "max_context_chars": 36000
+  },
+  "providers": {
+    "openrouter": {
+      "models_api": true
+    },
+    "gemini": {
+      "use_generate_content": true,
+      "files_api_optional": true
+    },
+    "perplexity": {
+      "chat_completions": true
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1"
+    }
+  },
+  "run": {
+    "question": "Proponi una revisione del sistema di magia per ridurre gli exploit ai livelli medi mantenendo la fantasy di potenza.",
+    "max_workers": 2
+  },
+  "judge": {
+    "enabled": false,
+    "provider": "nvidia",
+    "model": "deepseek/deepseek-r1"
+  },
+  "targets": [
+    {
+      "provider": "nvidia",
+      "model": "meta/llama-3.1-70b-instruct",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 1024,
+      "enabled": true,
+      "label": "or-rules"
+    },
+    {
+      "provider": "nvidia",
+      "model": "google/gemma-4-31b-it",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 16384,
+      "enabled": true,
+      "label": "nim-rules"
+    },
+    {
+      "provider": "nvidia",
+      "model": "deepseek-ai/deepseek-v4-flash",
+      "profile": "systems_designer",
+      "temperature": 0.45,
+      "max_tokens": 16384,
+      "enabled": true,
+      "label": "nim-systems"
+    },
+    {
+      "provider": "nvidia",
+      "model": "moonshotai/kimi-k2.6",
+      "profile": "gm_experience",
+      "temperature": 0.4,
+      "max_tokens": 16384,
+      "enabled": true,
+      "label": "nim-gm"
+    },    
+    {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "profile": "narrative_designer",
+      "temperature": 0.5,
+      "max_tokens": 1800,
+      "enabled": false,
+      "label": "or-narrative"
+    }
+  ]
+}

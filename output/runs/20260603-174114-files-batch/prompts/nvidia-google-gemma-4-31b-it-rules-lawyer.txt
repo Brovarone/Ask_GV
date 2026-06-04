@@ -1,0 +1,397 @@
+Contesto del progetto:Stai analizzando un corpus di regole GdR in Markdown gia' preprocessato.Profilo di risposta:Analizza come un rules lawyer rigoroso: coerenza, eccezioni, conflitti tra regole, edge case, ambiguita'.Domanda di sviluppo:Proponi una revisione del sistema di magia per ridurre gli exploit ai livelli medi mantenendo la fantasy di potenza.Materiale di riferimento:## SUMMARY STRUTTURATO
+
+{
+  "summary_text": "{   \"==Lettura del problema==\"\n\n  :\"\",\n  \"Il corpus Markdown fornito sembra essere una raccolta di regole e meccaniche per un gioco di ruolo tabletop. Il testo è scritto in un formato che sembra essere destinato a essere utilizzato come riferimento o manuale per i giocatori e i master del gioco. Le regole e le meccaniche descritte coprono una vasta gamma di argomenti, tra cui condizioni, benefici, discipline e stili di combattimento.\"\n\n  :\"\",\n  \"L'obiettivo di questa analisi è quello di comprendere le regole e le meccaniche descritte nel corpus e di identificare eventuali criticità o opportunità di miglioramento.\"\n\n  :\"\",\n  \"Per raggiungere questo obiettivo, sarà necessario analizzare attentamente il testo e identificare le principali regole e meccaniche descritte. Sarà anche importante considerare come queste regole e meccaniche interagiscono tra loro e come possono essere utilizzate per creare un'esperienza di gioco equilibrata e divertente.\"\n\n  :\"\",\n  \"Inoltre, sarà importante identificare eventuali lacune o ambiguità nel testo e proporre soluzioni per risolverle. Ciò potrebbe richiedere la creazione di nuove regole o meccaniche, o la modifica di quelle esistenti.\"\n\n  :\"\",\n  \"Infine, sarà importante testare le regole e le meccaniche descritte nel corpus per assicurarsi che funzionino come previsto e che siano equilibrate e divertenti. Ciò potrebbe richiedere la creazione di scenari di gioco e la simulazione di partite per testare le regole e le meccaniche in pratica.\"\n\n  :\"\",\n  \"In sintesi, l'obiettivo di questa analisi è quello di comprendere le regole e le meccaniche descritte nel corpus, identificare eventuali criticità o opportunità di miglioramento e proporre soluzioni per risolverle. Ciò richiederà un'analisi approfondita del testo e la creazione di nuove regole o meccaniche per risolvere eventuali lacune o ambiguità.\"\n\n  :\"\",\n  \"Inoltre, sarà importante testare le regole e le meccaniche descritte nel corpus per assicurarsi che funzionino come previsto e che siano equilibrate e divertenti.\"\n\n  :\"\",\n  \"In generale, l'analisi delle regole e delle meccaniche di un gioco di ruolo può essere un processo complesso e richiede una grande attenzione ai dettagli. Tuttavia, con un'analisi approfondita e una proposta di soluzioni efficaci, è possibile creare un gioco di ruolo equilibrato e divertente che offra un'esperienza di gioco unica e coinvolgente per i giocatori.\"\n\n  :\"\",\n  \"In questo caso specifico, l'analisi delle regole e delle meccaniche descritte nel corpus può aiutare a identificare eventuali criticità o opportunità di miglioramento e a proporre soluzioni per risolverle. Ciò può richiedere la creazione di nuove regole o meccaniche, o la modifica di quelle esistenti.\"\n\n  :\"\",\n  \"Inoltre, la creazione di scenari di gioco e la simulazione di partite possono aiutare a testare le regole e le meccaniche descritte nel corpus e a assicurarsi che funzionino come previsto e che siano equilibrate e divertenti.\"\n\n  :\"\",\n  \"In generale, l'analisi delle regole e delle meccaniche di un gioco di ruolo può essere un processo complesso e richiede una grande attenzione ai dettagli. Tuttavia, con un'analisi approfondita e una proposta di soluzioni efficaci, è possibile creare un gioco di ruolo equilibrato e divertente che offra un'esperienza di gioco unica e coinvolgente per i giocatori.\"\n\n  :\"\",\n  \"In questo caso specifico, l'analisi delle regole e delle meccaniche descritte nel corpus può aiutare a identificare eventuali criticità o opportunità di miglioramento e a proporre soluzioni per risolverle. Ciò può richiedere la cre",
+  "raw": {
+    "id": "chatcmpl-ba55e186f4894502",
+    "object": "chat.completion",
+    "created": 1780501281,
+    "model": "meta/llama-3.1-70b-instruct",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{   \"==Lettura del problema==\"\n\n  :\"\",\n  \"Il corpus Markdown fornito sembra essere una raccolta di regole e meccaniche per un gioco di ruolo tabletop. Il testo è scritto in un formato che sembra essere destinato a essere utilizzato come riferimento o manuale per i giocatori e i master del gioco. Le regole e le meccaniche descritte coprono una vasta gamma di argomenti, tra cui condizioni, benefici, discipline e stili di combattimento.\"\n\n  :\"\",\n  \"L'obiettivo di questa analisi è quello di comprendere le regole e le meccaniche descritte nel corpus e di identificare eventuali criticità o opportunità di miglioramento.\"\n\n  :\"\",\n  \"Per raggiungere questo obiettivo, sarà necessario analizzare attentamente il testo e identificare le principali regole e meccaniche descritte. Sarà anche importante considerare come queste regole e meccaniche interagiscono tra loro e come possono essere utilizzate per creare un'esperienza di gioco equilibrata e divertente.\"\n\n  :\"\",\n  \"Inoltre, sarà importante identificare eventuali lacune o ambiguità nel testo e proporre soluzioni per risolverle. Ciò potrebbe richiedere la creazione di nuove regole o meccaniche, o la modifica di quelle esistenti.\"\n\n  :\"\",\n  \"Infine, sarà importante testare le regole e le meccaniche descritte nel corpus per assicurarsi che funzionino come previsto e che siano equilibrate e divertenti. Ciò potrebbe richiedere la creazione di scenari di gioco e la simulazione di partite per testare le regole e le meccaniche in pratica.\"\n\n  :\"\",\n  \"In sintesi, l'obiettivo di questa analisi è quello di comprendere le regole e le meccaniche descritte nel corpus, identificare eventuali criticità o opportunità di miglioramento e proporre soluzioni per risolverle. Ciò richiederà un'analisi approfondita del testo e la creazione di nuove regole o meccaniche per risolvere eventuali lacune o ambiguità.\"\n\n  :\"\",\n  \"Inoltre, sarà importante testare le regole e le meccaniche descritte nel corpus per assicurarsi che funzionino come previsto e che siano equilibrate e divertenti.\"\n\n  :\"\",\n  \"In generale, l'analisi delle regole e delle meccaniche di un gioco di ruolo può essere un processo complesso e richiede una grande attenzione ai dettagli. Tuttavia, con un'analisi approfondita e una proposta di soluzioni efficaci, è possibile creare un gioco di ruolo equilibrato e divertente che offra un'esperienza di gioco unica e coinvolgente per i giocatori.\"\n\n  :\"\",\n  \"In questo caso specifico, l'analisi delle regole e delle meccaniche descritte nel corpus può aiutare a identificare eventuali criticità o opportunità di miglioramento e a proporre soluzioni per risolverle. Ciò può richiedere la creazione di nuove regole o meccaniche, o la modifica di quelle esistenti.\"\n\n  :\"\",\n  \"Inoltre, la creazione di scenari di gioco e la simulazione di partite possono aiutare a testare le regole e le meccaniche descritte nel corpus e a assicurarsi che funzionino come previsto e che siano equilibrate e divertenti.\"\n\n  :\"\",\n  \"In generale, l'analisi delle regole e delle meccaniche di un gioco di ruolo può essere un processo complesso e richiede una grande attenzione ai dettagli. Tuttavia, con un'analisi approfondita e una proposta di soluzioni efficaci, è possibile creare un gioco di ruolo equilibrato e divertente che offra un'esperienza di gioco unica e coinvolgente per i giocatori.\"\n\n  :\"\",\n  \"In questo caso specifico, l'analisi delle regole e delle meccaniche descritte nel corpus può aiutare a identificare eventuali criticità o opportunità di miglioramento e a proporre soluzioni per risolverle. Ciò può richiedere la cre",
+          "refusal": null,
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [],
+          "reasoning": null,
+          "reasoning_content": null
+        },
+        "logprobs": null,
+        "finish_reason": "length",
+        "stop_reason": null,
+        "token_ids": null
+      }
+    ],
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 21697,
+      "total_tokens": 22721,
+      "completion_tokens": 1024,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "prompt_token_ids": null,
+    "kv_transfer_params": null
+  }
+}
+
+## ESTRATTI RILEVANTI
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-condizioni-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Condizioni.md
+title: Condizioni
+headings: intro
+score: 31.69
+text:
+-  Frastornato  ^Frastornato
+    - Il bersaglio concede VIC 2
+    - Il bersaglio può eseguire solo un'azione standard durante il suo round regolare 
+-  Ipnotizzato ^Ipnotizzato
+    - Il bersaglio ha ora velocità di movimento pari a 0 
+- Confuso ^Confuso
+    - Il bersaglio non può eseguire azioni immediate 
+    - - Il bersaglio esegue un'azione casuale tirando 1d10
+          1-2: agisce normalmente
+          3-8: non esegue nessuna azione durante il suo round
+          9-0: muove verso il bersaglio più vicino e lo attacca con un attacco base in mischia se ha ancora azioni
+- Occultamento ^Occultamento
+    - +2 Difese
+- Copertura ^Copertura
+    - +2 Difese
+- Indebolito ^Indebolito
+    - Il bersaglio quando attacca o effettua prove di abilità fisiche deve effettuare due tiri di d20 e considerare valido il minore
+- Disorientato ^Disorientato
+    - Il bersaglio concede VIC 2
+    - Il bersaglio può eseguire solo l'azione di movimento e l'azione minore durante il suo round regolare
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-evocazione-evoca-mostri-i-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Evocazione\Evoca mostri I.md
+title: Evoca mostri I
+headings: intro
+score: 29.23
+text:
+---
+name: Evoca mostri I
+type: Incantesimo
+class: Mago
+level: 2
+cost: 1
+school: Evocazione
+descrittori: evocazione
+componenti: V, S
+azioni: "standard: il personaggio assegna una nuova azione all’evocazione."
+area: distanza 10
+durata: mantenere minore
+recupero: standard
+---
+**Scuola**: Evocazione
+**Descrittori**: evocazione
+**Componenti**: V, S
+**Azioni**: standard: il personaggio assegna una nuova azione all’evocazione.
+**Area**: distanza 10
+**Durata**: mantenere minore
+**Recupero**: standard
+
+**Descrizione**
+-
+
+*il personaggio evoca un mostro di livello 1 a combattere al suo fianco e gli assegna un’azione, il mostro è completamente soggiogato all’incantatore e deriva da un feticcio.
+
+Il feticcio richiede un’ora di lavoro con check di Intelligenza (CD 12) per
+
+completarlo. E’ possibile avere un numero di feticci pari al livello da mago
+
++1. Per la creazione del mostro scegliere una forma di base tra:
+
+- Volatile: Taglia P, Vel 3, volo 8
+
+PF 3 -- Rif 2, Temp 0, Vol 1 For 7, Des 16, Cos 8, Int 14, Sag 10, Car 13 Att AF
+
+vs CA, Danno 1d4
+
+- Quadrupede: Taglia P, Vel 6
+
+PF 5 -- Rif 2, Temp 1, Vol 0 For 13, Des 10, Cos, 14, Int 10, Sag 12, Car 11 Att
+
+AF vs CA Danno 1d4/1d4
+
+- Anfibio: Taglia P, Vel 4, nuoto 6
+
+PF 4 -- Rif 0, Temp 2, Vol 1 For 10, Des 12, Cos 15, Int 11, Sag 11, Car 9 Att
+
+AF vs CA Danno 1d4
+
+- Bipede: Taglia M, Vel 6
+
+PF 4 -- Rif 1, Temp 0, Vol 2 For 15, Des 11, Cos 12, Int 13, Sag 10, Car 12 Att
+
+AF vs CA, Danno 1d6.
+
+- Pesce: Taglia P, Vel 1, nuoto 8
+
+PF 5 -- Rif 0, Temp 1, Vol 2 For 11, Des 14, Cos 14, Int 13, Sag 12, Car 12 Att
+
+AF vs CA, Danno 1d4.
+
+- Rettile: Taglia P, Vel 5, scalare 5
+
+PF 5 -- Rif 1, Temp 2, Vol 0 For 11, Des 14, Cos 14, Int 11, Sag 12, Car 12 Att
+
+AF vs CA, Danno 1d4. Scelta la base si può scegliere una tra le seguenti
+
+capacità aggiuntive:
+
+- Danno incrementato: il danno è incrementato di uno step (1d4 diventa 1d6)
+
+- Punti ferita incrementati: +2 PF per dado vita
+
+- Velocità incrementata: aggiunge 2 alla velocità
+
+- Attacco alternativo: attacca su una difesa diversa da CA*
+
+---
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-condizioni-impaurito-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Condizioni\Impaurito.md
+title: Impaurito
+headings: intro
+score: 25.46
+text:
+---
+type: Condizione
+class: "Generali"
+level: 0
+cost: 0
+---
+
+**Effetti della Condizione**
+
+* Il bersaglio deve usare almeno un'azione di movimento durante il suo round per allontanarsi dalla fonte
+* Il bersaglio non può avvicinarsi alla fonte
+* Se il bersaglio non può allontanarsi dalla fonte di mette [[Prono]]nel suo quadretto
+* Il bersaglio non può come bersaglio di un attacco o di un potere la fonte
+* Il bersaglio non può avere come unico bersaglio di un attacco o potere ad area la fonte
+* Il bersaglio non può ritardare
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-preghiere-morte-ritarda-morte-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Preghiere\Morte\Ritarda morte.md
+title: Ritarda morte
+headings: intro
+score: 22.59
+text:
+---
+name: Ritarda morte
+type: Preghiera
+class: Sacerdote
+level: 8
+cost: 1
+school: Morte
+componenti: V
+azioni: minore
+area: Contatto
+bersagli: Creatura morente o stabile
+durata: Turno
+recupero: Turno
+---
+**Scuola**: Morte
+**Componenti**: V
+**Azioni**: minore
+**Area**: Contatto
+**Bersagli**: Creatura morente o stabile
+**Durata**: Turno
+**Recupero**: Turno
+
+**Descrizione**
+-
+
+*Il bersaglio si sveglia e può agire normalmente (sarà colto alla sprovvista), dovrà comunque effettuare il tiro salvezza morte e morirà secondo le condizioni di morte.
+
+Se il bersaglio ritorna ad un punteggio positivo di punti ferita il potere ha
+
+termine.*
+
+---
+
+Infervorato: Il bersaglio non è colto alla sprovvista e può agire a 20
+
+quarantesimi dal risveglio.
+
+---
+
+*Ci servi ancora, anche da morto o quasi.*
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-preghiere-fato-festino-degli-eroi-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Preghiere\Fato\Festino degli eroi.md
+title: Festino degli eroi
+headings: intro
+score: 22.58
+text:
+---
+name: Festino degli eroi
+type: Preghiera
+class: Sacerdote
+level: 9
+cost: 1
+school: Fato
+descrittori: Componenti: V
+azioni: minore: rimuove una condizione continuata da un bersaglio nell'area
+area: Emanazione ravvicinata 10 (C)
+bersagli: Creature a scelta del personaggio
+durata: Mantenere minore
+recupero: Standard
+---
+**Scuola**: Fato
+**Descrittori**: Componenti: V
+**Azioni**: minore: rimuove una condizione continuata da un bersaglio nell'area
+**Area**: Emanazione ravvicinata 10 (C)
+**Bersagli**: Creature a scelta del personaggio
+**Durata**: Mantenere minore
+**Recupero**: Standard
+
+**Descrizione**
+*i bersagli ottengono +2 alle difese*
+
+---
+
+minore: un bersaglio nell'area ottiene 5 punti ferita temporanei
+
+Infervorato:
+
++2 anche ai tiri salvezza
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-preghiere-fato-deviare-danno-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Preghiere\Fato\Deviare danno.md
+title: Deviare danno
+headings: intro
+score: 22.57
+text:
+---
+name: Deviare danno
+type: Preghiera
+class: Sacerdote
+level: 6
+cost: 1
+school: Fato
+componenti: V
+azioni: Interruzione immediata
+area: Distanza 10
+bersagli: Creatura
+durata: Istantanea
+recupero: Standard
+---
+**Scuola**: Fato
+**Componenti**: V
+**Azioni**: Interruzione immediata
+**Area**: Distanza 10
+**Bersagli**: Creatura
+**Durata**: Istantanea
+**Recupero**: Standard
+
+**Descrizione**
+-
+
+Attivazione: Il bersaglio sta per subire l'effetto di un attacco andato a segno
+
+*L'effetto viene invece subito da un altro bersaglio a caso a distanza 10 che non sia l'attuale attaccante o l'attuale difensore (se disponibile, altrimenti il potere fallisce)*
+
+---
+
+Infervorato: Il personaggio può riestrarre il nuovo bersaglio ignorando il
+
+primo risultato
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-preghiere-guerra-reazione-repentina-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Preghiere\Guerra\Reazione repentina.md
+title: Reazione repentina
+headings: intro
+score: 22.55
+text:
+---
+name: Reazione repentina
+type: Preghiera
+class: Sacerdote
+level: 9
+cost: 1
+school: Guerra
+componenti: V
+azioni: reazione immediata
+area: Personale
+bersagli: Personaggio
+durata: Istantanea
+recupero: Standard
+---
+**Scuola**: Guerra
+**Componenti**: V
+**Azioni**: reazione immediata
+**Area**: Personale
+**Bersagli**: Personaggio
+**Durata**: Istantanea
+**Recupero**: Standard
+
+**Descrizione**
+-
+
+Attivazione: Il personaggio ha appena effettuato un attacco o un potere di
+
+attacco con bersaglio singolo
+
+*Il personaggio può effettuare un secondo attacco o un secondo potere di attacco con tempo di lancio standard a bersaglio singolo contro lo stesso bersaglio.*
+
+---
+
+Infervorato: Recupero movimento
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-preghiere-fato-battaglia-altalenante-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Preghiere\Fato\Battaglia altalenante.md
+title: Battaglia altalenante
+headings: intro
+score: 22.54
+text:
+---
+name: Battaglia altalenante
+type: Preghiera
+class: Sacerdote
+level: 9
+cost: 1
+school: Fato
+componenti: V
+azioni: standard
+area: Emanazione ravvicinata 10 (C)
+bersagli: Alleati (P)
+durata: Mantenere minore
+recupero: Standard
+---
+**Scuola**: Fato
+**Componenti**: V
+**Azioni**: standard
+**Area**: Emanazione ravvicinata 10 (C)
+**Bersagli**: Alleati (P)
+**Durata**: Mantenere minore
+**Recupero**: Standard
+
+**Descrizione**
+-
+
+*I bersagli sono sotto l'effetto di fortuna divina per un round*
+
+---
+
+Infervorato: Il personaggio può variare di 1 il tiro di dato per ogni bersaglio
+
+Mantenim.: I bersagli riestraggono gli effetti di Fortuna Divina e prolungano
+
+l'effetto per un round
+Vincoli:- usa il corpus fornito come base primaria- se manca informazione, dichiaralo- distingui osservazioni, inferenze e proposte- cita file, heading o chunk quando utile- proponi modifiche operative, non solo teoria astratta

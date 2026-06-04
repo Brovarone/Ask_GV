@@ -1,0 +1,107 @@
+{
+  "input": {
+    "ignore_patterns": [
+      ".git/*",
+      ".github/*",
+      "node_modules/*",
+      "venv/*",
+      ".venv/*",
+      "dist/*",
+      "build/*",
+      "site/*",
+      "*.png",
+      "*.jpg",
+      "*.jpeg",
+      "*.gif",
+      "*.webp",
+      "*.svg",
+      "*.pdf",
+      "*.zip",
+      "*.7z",
+      "*.mp3",
+      "*.mp4"
+    ]
+  },
+  "summary": {
+    "provider": "gemini",
+    "model": "gemini-2.5-pro",
+    "gemini_use_files_api": false
+  },
+  "retrieval": {
+    "chunk_size": 2200,
+    "chunk_overlap": 250,
+    "top_k": 8,
+    "max_context_chars": 36000
+  },
+  "providers": {
+    "openrouter": {
+      "models_api": true
+    },
+    "gemini": {
+      "use_generate_content": true,
+      "files_api_optional": true
+    },
+    "perplexity": {
+      "chat_completions": true
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1"
+    }
+  },
+  "run": {
+    "question": "Proponi una revisione del sistema di magia per ridurre gli exploit ai livelli medi mantenendo la fantasy di potenza.",
+    "max_workers": 4
+  },
+  "judge": {
+    "enabled": true,
+    "provider": "openrouter",
+    "model": "openai/gpt-4.1-mini"
+  },
+  "targets": [
+    {
+      "provider": "openrouter",
+      "model": "anthropic/claude-3.7-sonnet",
+      "profile": "rules_lawyer",
+      "temperature": 0.35,
+      "max_tokens": 2200,
+      "enabled": true,
+      "label": "claude-rules"
+    },
+    {
+      "provider": "openrouter",
+      "model": "openai/gpt-4.1-mini",
+      "profile": "systems_designer",
+      "temperature": 0.45,
+      "max_tokens": 2200,
+      "enabled": true,
+      "label": "gpt-systems"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-2.5-pro",
+      "profile": "gm_experience",
+      "temperature": 0.4,
+      "max_tokens": 2200,
+      "enabled": true,
+      "label": "gemini-gm"
+    },
+    {
+      "provider": "perplexity",
+      "model": "sonar",
+      "profile": "new_player",
+      "temperature": 0.3,
+      "max_tokens": 1800,
+      "enabled": true,
+      "label": "sonar-onboarding"
+    },
+    {
+      "provider": "nvidia",
+      "model": "google/gemma-7b",
+      "profile": "narrative_designer",
+      "temperature": 0.5,
+      "max_tokens": 1800,
+      "enabled": false,
+      "label": "nim-narrative"
+    }
+  ]
+}

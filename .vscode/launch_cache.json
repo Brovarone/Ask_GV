@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Ask_GV CLI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ask_gv.cli",
+      "cwd": "D:\\Progetti\\Ask_GV",
+      "args": [
+        "--config",
+        "config.json",
+        "--cache-dir",
+        "output\\cache\\20260603-xxxxxx-files-batch"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}
