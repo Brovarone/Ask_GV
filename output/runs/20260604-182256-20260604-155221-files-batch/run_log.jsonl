@@ -1,8 +1,0 @@
-{"event": "start"}
-{"event": "cache_loaded", "cache_dir": "output\\cache\\20260604-155221-files-batch"}
-{"event": "targets_ready", "count": 5}
-{"event": "answer_done", "id": "nvidia:meta/llama-3.1-70b-instruct:rules_lawyer", "success": true, "latency_s": 75.76644611358643, "error": null}
-{"event": "answer_done", "id": "nvidia:google/gemma-4-31b-it:rules_lawyer", "success": false, "latency_s": 304.01033425331116, "error": "[generic] HTTP 504: {\"text\": \"\"}"}
-{"event": "answer_done", "id": "nvidia:moonshotai/kimi-k2.6:gm_experience", "success": true, "latency_s": 49.195443630218506, "error": null}
-{"event": "answer_done", "id": "nvidia:meta/nemotron-3-super-120b-a12b:rules_lawyer", "success": false, "latency_s": 0.911998987197876, "error": "[generic] HTTP 404: {\"text\": \"404 page not found\\n\"}"}
-{"event": "answer_done", "id": "nvidia:deepseek-ai/deepseek-v4-flash:systems_designer", "success": false, "latency_s": 302.8622705936432, "error": "[generic] HTTP 504: {\"text\": \"\"}"}

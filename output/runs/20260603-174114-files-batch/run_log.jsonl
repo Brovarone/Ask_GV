@@ -1,7 +1,0 @@
-{"event": "start"}
-{"event": "knowledge_built", "documents": 1287, "cache_dir": "output\\cache\\20260603-174114-files-batch"}
-{"event": "targets_ready", "count": 4}
-{"event": "answer_done", "id": "nvidia:moonshotai/kimi-k2.6:gm_experience", "success": true, "latency_s": 99.68865060806274, "error": null}
-{"event": "answer_done", "id": "nvidia:meta/llama-3.1-70b-instruct:rules_lawyer", "success": true, "latency_s": 233.11816835403442, "error": null}
-{"event": "answer_done", "id": "nvidia:deepseek-ai/deepseek-v4-flash:systems_designer", "success": false, "latency_s": 548.2744345664978, "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. (read timeout=180)"}
-{"event": "answer_done", "id": "nvidia:google/gemma-4-31b-it:rules_lawyer", "success": false, "latency_s": 548.4797177314758, "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. (read timeout=180)"}
