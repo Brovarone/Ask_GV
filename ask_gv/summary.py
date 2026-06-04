@@ -17,7 +17,7 @@ def build_summary_corpus(documents: List[SourceDocument], max_chars: int = DEFAU
             break
         blocks.append(block)
         current += len(block)
-    return "".join(blocks).strip()
+    return "\n".join(blocks).strip()
 
 
 def generate_summary(

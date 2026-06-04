@@ -1,0 +1,213 @@
+# Report multi-LLM modulare
+
+**Domanda:** Proponi una soluzione alternativa alla gestione della CA ( Classe Armatura) essendo tra tutte le difese l'unica che non sale.
+
+## Knowledge pack
+- documenti: 1287
+- chunk: 1600
+
+## Summary tecnico
+{
+  "{": 1.1
+}
+
+## Chunk principali
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-z-tools-estrattore-talenti-dataview-md-0001` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\z_tools\estrattore Talenti DataView.md` | score=102.24 | headings=🎲 Talenti Sbloccati per il tuo Multiclasse
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-trasmutazione-clone-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Trasmutazione\Clone.md` | score=37.68 | headings=intro
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-benefici-generali-seguace-animale-animale-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Benefici\Generali\Seguace animale (animale).md` | score=34.91 | headings=intro
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-trasmutazione-fondersi-con-la-pietra-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Trasmutazione\Fondersi con la pietra.md` | score=25.68 | headings=intro
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-illusione-trucco-della-traslocazione-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Illusione\Trucco della traslocazione.md` | score=19.58 | headings=intro
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-z-tools-estrattore-talenti-dataview-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\z_tools\estrattore Talenti DataView.md` | score=19.28 | headings=intro
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-talenti-generali-addestramento-in-un-armatura-esotica-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Talenti\Generali\Addestramento in un’armatura esotica.md` | score=18.12 | headings=intro
+- `c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-evocazione-evoca-mostri-ii-md-0000` | `C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Evocazione\Evoca mostri II.md` | score=16.80 | headings=intro
+
+## Risposte
+### nvidia:deepseek-ai/deepseek-v4-flash:systems_designer
+- success: false
+- latency_s: 302.86
+- error: [generic] HTTP 504: {"text": ""}
+
+### nvidia:google/gemma-4-31b-it:rules_lawyer
+- success: false
+- latency_s: 304.01
+- error: [generic] HTTP 504: {"text": ""}
+
+### nvidia:meta/llama-3.1-70b-instruct:rules_lawyer
+- success: true
+- latency_s: 75.77
+
+**Lettura del problema**
+
+Il problema è relativo alla gestione della Classe Armatura (CA) nel gioco di ruolo, che non aumenta come le altre difese. Il giocatore vuole trovare una soluzione alternativa per gestire la CA.
+
+**Cosa emerge dalle regole fornite**
+
+Dalle regole fornite, non emerge una soluzione specifica per la gestione della CA. Tuttavia, si possono notare alcune regole relative alle armature e ai talenti che potrebbero essere utilizzate come base per una soluzione alternativa.
+
+Ad esempio, il file "c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-talenti-generali-addestramento-in-un-armatura-esotica-md-0000" descrive il talento "Addestramento in un'armatura esotica", che potrebbe essere utilizzato come base per una soluzione alternativa per la gestione della CA.
+
+**Criticita' / opportunita'**
+
+La gestione della CA è un aspetto importante del gioco di ruolo, poiché influenza la capacità del personaggio di difendersi dagli attacchi. La mancanza di una soluzione specifica per la gestione della CA potrebbe creare problemi di bilanciamento nel gioco.
+
+Tuttavia, la possibilità di utilizzare talenti e regole esistenti come base per una soluzione alternativa offre un'opportunità per creare una soluzione più flessibile e personalizzabile.
+
+**Proposta operativa**
+
+Proposta: utilizzare il talento "Addestramento in un'armatura esotica" come base per una soluzione alternativa per la gestione della CA. Il giocatore potrebbe scegliere di utilizzare questo talento per aumentare la sua CA, anziché utilizzare la regola standard per la CA.
+
+Inoltre, potrebbe essere introdotta una nuova regola che permetta al giocatore di utilizzare la sua CA come base per calcolare la sua difesa, anziché utilizzare la regola standard per la difesa.
+
+**Impatti collaterali / trade-off**
+
+L'introduzione di una nuova regola per la gestione della CA potrebbe avere impatti collaterali sul gioco, ad esempio:
+
+* Potrebbe creare problemi di bilanciamento nel gioco, se la nuova regola non è ben calibrata.
+* Potrebbe richiedere la modifica di altre regole o talenti per mantenere la coerenza del gioco.
+
+Tuttavia, la possibilità di utilizzare talenti e regole esistenti come base per una soluzione alternativa offre un'opportunità per creare una soluzione più flessibile e personalizzabile.
+
+**Test consigliati al tavolo**
+
+Per testare la nuova regola, si consiglia di:
+
+* Utilizzare il talento "Addestramento in un'armatura esotica" come base per la gestione della CA.
+* Introdurre la nuova regola per la gestione della CA e testarla in diverse situazioni di gioco.
+* Verificare se la nuova regola crea problemi di bilanciamento nel gioco e apportare le necessarie modifiche.
+
+### nvidia:meta/nemotron-3-super-120b-a12b:rules_lawyer
+- success: false
+- latency_s: 0.91
+- error: [generic] HTTP 404: {"text": "404 page not found\n"}
+
+### nvidia:moonshotai/kimi-k2.6:gm_experience
+- success: true
+- latency_s: 49.20
+
+## 1. Lettura del problema
+
+Il progettista identifica un problema di design nel sistema di difese: **la CA (Classe Armatura) è l'unica difesa che non scala con il livello del personaggio**, a differenza delle altre difese (probabilmente Tempra, Riflessi, Volontà o simili, tipiche dei sistemi d20 moderni). Questo crea un disequilibrio nel tempo: i personaggi diventano più vulnerabili agli attacchi fisici rispetto ad altri tipi di minaccia, rendendo la CA un "bottleneck" di progressione.
+
+Dal corpus fornito, non trovo esplicita la struttura delle difese né la progressione della CA. Tuttavia, il pattern emerge indirettamente: il sistema utilizza livelli di classe, talenti con prerequisiti, e benefici scalabili (es. "Seguace animale" dove il livello del seguace non supera il livello del personaggio).
+
+---
+
+## 2. Cosa emerge dalle regole fornite
+
+### Osservazioni dal corpus:
+
+| Elemento | Fonte | Rilevanza |
+|----------|-------|-----------|
+| Sistema di **livelli di classe** con progressione separata | `estrattore Talenti DataView.md` (CHUNK 0000) | La progressione è per classe, non globale uniforme |
+| **Talenti con prerequisiti** e costi variabili | `Addestramento in un'armatura esotica.md` | Esistono meccaniche di "tassa" per accesso a difese superiori |
+| **Armature esotiche** come categoria separata | `Addestramento in un'armatura esotica.md` | La CA è già vincolata a investimenti specifici |
+| **Incantesimi di protezione/trasmutazione** con mantenimento | `Fondersi con la pietra.md`, `Clone.md` | Esistono alternative magiche alla CA fisica |
+| **Seguace animale** con bonus contestuali (+2 ad abilità comuni se adiacenti) | `Seguace animale (animale).md` | Modello di bonus situazionale già presente nel sistema |
+
+### Inferenza critica:
+Il sistema **non ha una CA base che scala automaticamente** con il livello. Questo è coerente con design tipo D&D 3.x/Pathfinder, ma in contrasto con evoluzioni successive (4e, 5e, PF2) dove la CA scala con il livello o con il bonus di competenza.
+
+---
+
+## 3. Criticità / opportunità
+
+### Criticità della CA statica:
+- **Problema di pacing a lungo termine**: i nemici di livello superiore hanno bonus di attacco crescenti; senza scala della CA, i personaggi subiscono progressivamente più colpi
+- **Tassa obbligatoria**: diventa obbligatorio investire in armature migliori/talenti dedicati, restringendo la varietà di build
+- **Disallineamento con altre difese**: se Tempra/Riflessi/Volontà scalano (probabilmente con il livello o con gli attributi che salgono), la CA rimane indietro
+- **Attrito al tavolo**: il DM deve bilanciare gli incontri tenendo conto che alcuni PG sono "spugnosi" anche se dovrebbero essere esperti
+
+### Opportunità:
+- Il sistema ha già **meccaniche di "mantenere"** per incantesimi (suggestivo di azioni economizzate)
+- I **talenti hanno costi in punti** (es. 5 per armatura esotica), indicando un'economia di costo-opportunità strutturata
+- La **multiclasse è supportata** (fino a 3 classi), quindi la progressione non è lineare per tutti
+
+---
+
+## 4. Proposta operativa
+
+### Soluzione alternativa: **"CA di Competenza" scalabile**
+
+Implementare un bonus alla CA derivato dal **livello totale del personaggio** (somma dei livelli di classe), non dal livello di una singola classe.
+
+| Livello Totale | Bonus di Competenza alla CA |
+|:--|:--|
+| 1-4 | +0 |
+| 5-8 | +1 |
+| 9-12 | +2 |
+| 13-16 | +3 |
+| 17-20 | +4 |
+
+#### Implementazione concreta:
+
+**A. Regola base (da aggiungere alla sezione difese/combattimento):**
+> *"Il personaggio aggiunge il proprio Bonus di Competenza alla CA quando indossa un'armatura con cui è competente. Se non indossa armatura, può aggiungere il Bonus di Competenza solo se ha almeno un talento che lo permetta (es. Difesa Senza Armatura)."*
+
+**B. Interazione con armature esistenti:**
+- Le armature leggere/mediopesanti/pesanti mantengono il loro valore base
+- Il Bonus di Competenza si somma al valore dell'armatura
+- Le **armature esotiche** (CHUNK: `Addestramento in un'armatura esotica.md`) potrebbero avere un "tetto" di Bonus di Competenza più alto (+1 rispetto al normale), giustificando il costo di 5 punti
+
+**C. Talenti esistenti da verificare:**
+- Se esistono talenti tipo "Difesa Migliorata" o simili, potrebbero essere riconvertiti per scalare il Bonus di Competenza in condizioni speciali (es. +1 addizionale quando si combatte in difesa)
+
+---
+
+## 5. Impatti collaterali / trade-off
+
+| Aspetto | Impatto | Gestione |
+|--------|---------|----------|
+| **Curve di progressione dei mostri** | Gli attacchi dei nemici potrebbero diventare troppo "swingy" se la CA sale troppo | Rivedere il bonus di attacco base dei mostri per livello, o usare "attacco di competenza" parallelo |
+| **Valore degli scudi** | Gli scudi (+2 o simile) potrebbero diventare meno relativi | Considerare di far scalare anche il bonus dello scudo, o lasciarlo come "premio" per build difensive |
+| **Incantesimi di buff alla CA** (es. Armatura Mage, se esiste) | Potrebbero diventare ridondanti | Riconvertirli come "azione rapida per massimizzare Bonus di Competenza" o danni ridotti |
+| **Build "nude" (monaci, barbariani)** | Richiedono chiarezza su quando si applica il bonus | Definire esplicitamente i prerequisiti per CA senza armatura |
+| **Costo dei talenti difensivi esistenti** | Il talento da 5 punti per armatura esotica potrebbe svalutarsi | Aggiungere beneficio aggiuntivo all'esotica (es. riduzione danni mentre si muove) |
+
+### Trade-off principale:
+> **Semplicità vs. profondità**: la soluzione mantiene la semplicità del calcolo (singolo valore da aggiungere) ma introduce un elemento di progressione "invisibile" che i giocatori devono tracciare. Dato che il sistema già traccia livelli multipli di classe, il sovraccarico cognitivo è minimo.
+
+---
+
+## 6. Test consigliati al tavolo
+
+### Test A: Confronto numerico rapido
+1. Prendere un personaggio livello 1 (CA base con armatura) e uno livello 10
+2. Confrontare la probabilità di essere colpiti da un nemico "standard" del proprio livello
+3. **Obiettivo**: la probabilità dovrebbe rimanere circa stabile (~50-60%), non crollare al 80%+
+
+### Test B: Stress-test multiclasse
+1. Creare un personaggio Bardo 3 / Vagabondo 2 / Mago 1 (dal CHUNK 0000)
+2. Verificare se il livello totale 6 genera un Bonus di Competenza +1 ragionevole
+3. **Obiettivo**: i multiclassi non dovrebbero essere penalizzati rispetto ai single-class
+
+### Test C: Confronto con incantesimi difensivi
+1. Confrontare la CA di un guerriero in armatura pesante + Bonus di Competenza
+2. Con la "durabilità effettiva" di un mago con incantesimi tipo `Fondersi con la pietra` (CHUNK: riduzione danni condizionale)
+3. **Obiettivo**: i due approcci dovrebbero essere comparabili in termini di round di sopravvivenza
+
+### Test D: Sessione con attrito misurato
+1. Giocare 2-3 combattimenti con la nuova regola
+2. Tracciare: quanti colpi vanno a segno, quanti round durano i combattimenti, se i giocatori sentono la differenza
+3. **Obiettivo**: il GM non dovrebbe dover "spammare" nemici con bonus di attacco innaturale per mettere in pericolo i PG
+
+---
+
+## Nota su informazioni mancanti
+
+**Dichiaro esplicitamente**: il corpus fornito non contiene la sezione di regole base su:
+- Come è calcolata la CA attualmente
+- Quali sono le altre difese e come scalano
+- Se esistono già meccaniche di "competenza" o bonus di livello simili
+- La struttura dei livelli di classe (progressione BAB, salvataggi, ecc.)
+
+Senza queste informazioni, la proposta del Bonus di Competenza è una **inferenza progettuale** basata su pattern di sistemi d20 moderni e sui frammenti di economia di talenti presenti nel corpus. Se il sistema utilizza già un diverso paradigma (es. difese come abilità, o CA fissa con danni ridotti), la proposta richiederebbe adattamento.
+
+## Judge
+{
+  "winner": ":nvidia:moonshotai/kimi-k2.6:gm_experience",
+  "ranking": [
+    ":nvidia:moonshotai/kimi-k2.6:gm_experience",
+    ":nvidia:meta/llama-3.1-70b-instruct:rules_lawyer"
+  ],
+  "synthesis": "Il secondo candidato propone una soluzione concreta e scalabile: un Bonus di Competenza alla CA basato sul livello totale del personaggio, con tabella chiara, regole di interazione con armature esistenti, considerazione di talenti e incantesimi, analisi di trade-off e test pratici. Si basa su elementi presenti nel corpus (livelli di classe, talenti con prerequisiti, incantesimi di mantenimento, seguace animale) e ammette esplicitamente le informazioni mancanti, limitando le allucinazioni. Il primo candidato è vago, suggerisce l'uso di un talento non presente nel corpus e non fornisce meccaniche operative né analisi di impatto, risultando meno utile per lo sviluppo."
+}

@@ -1,0 +1,318 @@
+Contesto del progetto:Stai analizzando un corpus di regole GdR in Markdown gia' preprocessato.Profilo di risposta:Analizza come un game master: facilita' di gestione al tavolo, pacing, chiarezza operativa, riduzione attriti.Domanda di sviluppo:Proponi una soluzione alternativa alla gestione della CA ( Classe Armatura) essendo tra tutte le difese l'unica che non sale.Materiale di riferimento:## SUMMARY STRUTTURATO
+
+{
+  "{": 1.1
+}
+
+## ESTRATTI RILEVANTI
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-z-tools-estrattore-talenti-dataview-md-0001
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\z_tools\estrattore Talenti DataView.md
+title: 🎲 Talenti Sbloccati per il tuo Multiclasse
+headings: 🎲 Talenti Sbloccati per il tuo Multiclasse
+score: 102.24
+text:
+## 🎲 Talenti Sbloccati per il tuo Multiclasse
+
+>[!SUMMARY]+ Elenco Talenti
+>```dataviewjs
+>// 1. Lettura dinamica del Path dal frontmatter (dv.current().path_talenti)
+>const path = dv.current().path_talenti;
+>const generali = dv.current().includi_generali;
+>
+>// 2. Definizione dei parametri del multiclasse
+>const max_livello_totale = dv.current().classe1_max + dv.current().classe2_max + dv.current().classe3_max;
+>const classe1 = dv.current().classe1;
+>const max_classe1 = dv.current().classe1_max;
+>const classe2 = dv.current().classe2;
+>const max_classe2 = dv.current().classe2_max;
+>const classe3 = dv.current().classe3;
+>const max_classe3 = dv.current().classe3_max;
+>const razza = dv.current().razza;
+>
+>// 3. Esecuzione della query: filtra in base al path e alla logica multiclasse
+>const risultati = dv.pages(`"${path}"`)
+>    .where(p => p.type === "Talento")
+>    .where(p => 
+>        (
+>            // Talenti Generali o di Razza: livello totale di personaggio
+>            (generali) &&
+>            (p.class === "Generali" || p.class === razza) && (p.level <= max_livello_totale)
+>        ) || (
+>            // Classe 1: livello massimo di Classe 1
+>            p.class === classe1 && p.level <= max_classe1
+>        ) || (
+>            // Classe 2: livello massimo di Classe 2
+>            p.class === classe2 && p.level <= max_classe2
+>        ) || (
+>            // Classe 3: livello massimo di Classe 3
+>            p.class === classe3 && p.level <= max_classe3
+>        )
+>    )
+>    .sort(p => p.level, 'asc')
+>    //.sort(p => p.class, 'asc')
+>    //.sort(p => p.file.name, 'asc')
+>    ;
+>
+>// 4. Visualizzazione dei risultati in una tabella
+>dv.table(
+>    ["Nome", "Classe", "Livello", "Prerequisiti"], 
+>    risultati.map(p => [
+>        p.file.link, 
+>        p.class,
+>        p.level,
+>        p.prerequisites
+>    ])    
+>    .sort(p => p.level, 'asc')
+>    .sort(p => p.class, 'asc')        
+>);
+>```
+
+>[!SUMMARY]- Lista Benefici
+> ```dataview
+> LIST
+>  FROM ""
+> WHERE
+>  type = "Beneficio"
+>   
+>
+
+```
+
+>[!TIP]
+> ciao 2
+
+>[!infobox]
+> ciao
+
+>[!INFO]
+> ciao
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-trasmutazione-clone-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Trasmutazione\Clone.md
+title: Clone
+headings: intro
+score: 37.68
+text:
+---
+name: Clone
+type: Incantesimo
+class: Mago
+level: 7
+cost: 1
+school: Trasmutazione
+componenti: V, S
+azioni: "minore: il personaggio può trasferire la volontà tra una copia e"
+area: distanza 20
+durata: mantenere minore
+recupero: standard
+---
+**Scuola**: Trasmutazione
+**Componenti**: V, S
+**Azioni**: minore: il personaggio può trasferire la volontà tra una copia e
+**Area**: distanza 20
+**Durata**: mantenere minore
+**Recupero**: standard
+
+**Descrizione**
+-
+
+-
+
+*il personaggio genera una copia di se stesso in un quadretto libero entro gittata e trasferisce la sua volontà nella copia, potrà quindi agire direttamente dalla copia. Se viene colpito una copia del personaggio che non è attualmente “occupata” dalla volontà dello stesso questa scompare e il potere ha termine.*
+
+---
+
+l’altra se si trova entro 20 quadretti di distanza.
+
+Mantenim.: il personaggio può trasferire la volontà tra una copia e l’altra
+
+se si trova entro 20 quadretti di distanza.
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-benefici-generali-seguace-animale-animale-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Benefici\Generali\Seguace animale (animale).md
+title: Seguace animale (animale)
+headings: intro
+score: 34.91
+text:
+---
+name: Seguace animale (animale)
+type: Beneficio
+#class: Generali
+class: "Generali"
+level: 1
+cost: 1
+prerequisites:
+---
+
+**Descrizione**
+il personaggio crea con un animale domestico comune un legame affettivo.
+L'animale si muoverà autonomamente nelle vicinanze del personaggio, mantenendo
+nei confronti di altri un comportamento auto-conservativo. Tramite gesti e
+suoni, il personaggio può comunicare all'animale dei comandi che comportino
+l'uso di tutte le azioni che può compiere l'animale in quel round. Se animale e
+personaggio sono adiacenti, quest'ultimo godrà di un +2 a tutte le abilità che
+hanno in comune.Speciale: questo talento non prevede tempi di addestramento
+dell'animale solo se selezionato al momento della creazione del personaggio. Se
+selezionato in momenti successivi occorrerà un tempo variabile di
+addestramento. Tale periodo sarà quantificato a discrezione del DM sulla base
+di specie ed età dell'animale da addestrare. In caso di morte dell'animale il
+personaggio potrà ricercare un nuovo Seguace Animale, ma dovrà essere della
+stessa specie selezionata con il talento e dovrà affrontare i tempi di
+addestramento.A discrezione del DM possono essere selezionati animali comuni non
+domestici, se diffusi nell'ambiente del personaggio.È possibile selezionare
+questo beneficio più volte variando l'animale selezionato. Il livello del
+seguace non può essere superiore al livello del personaggio.
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-trasmutazione-fondersi-con-la-pietra-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Trasmutazione\Fondersi con la pietra.md
+title: Fondersi con la pietra
+headings: intro
+score: 25.68
+text:
+---
+name: Fondersi con la pietra
+type: Incantesimo
+class: Mago
+level: 7
+cost: 1
+school: Trasmutazione
+componenti: V, S
+azioni: movimento
+area: personale
+bersagli: Personaggio
+durata: mantenere minore
+recupero: turno
+---
+**Scuola**: Trasmutazione
+**Componenti**: V, S
+**Azioni**: movimento
+**Area**: personale
+**Bersagli**: Personaggio
+**Durata**: mantenere minore
+**Recupero**: turno
+
+**Descrizione**
+-
+
+*il personaggio può entrare all'interno di un blocco di pietra, mantiene la percezione di ciò che accade nei metri immediatamente adiacenti al blocco e deve comunque uscire dal punto in cui è entrato. Se la roccia viene distrutta o danneggiata il personaggio subisce 5d6 danni da impatto. Se la roccia viene in questo modo ridotta di dimensioni fino a non poterlo più contenere viene espulso. Se il personaggio non mantiene viene espulso nel quadretto libero più vicino subendo 5d6 danni. All'interno della roccia il personaggio può effettuare qualsiasi azione.*
+
+---
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-illusione-trucco-della-traslocazione-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Illusione\Trucco della traslocazione.md
+title: Attacco
+headings: intro
+score: 19.58
+text:
+---
+name: Trucco della traslocazione
+type: Incantesimo
+class: Mago
+level: 7
+cost: 1
+school: Illusione
+componenti: V, S
+azioni: Standard
+area: Distanza 30
+bersagli: Creatura
+durata: Mantenere minore (l'illusione)
+recupero: Standard
+---
+**Scuola**: Illusione
+**Componenti**: V, S
+**Azioni**: Standard
+**Area**: Distanza 30
+**Bersagli**: Creatura
+**Durata**: Mantenere minore (l'illusione)
+**Recupero**: Standard
+
+**Descrizione**
+-
+
+*Il personaggio e il bersaglio si scambiano di posto muovendosi con teletrasporto e un'illusione simile a Cambiare Sembianze colpisce entrambi mostrandoli uno nelle sembianze dell'altro. Il risultato è che agli occhi di chi osserva non sembra essere successo nulla. Se il bersaglio non è consenziente è necessario l'attacco.*
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-z-tools-estrattore-talenti-dataview-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\z_tools\estrattore Talenti DataView.md
+title: 🎲 Talenti Sbloccati per il tuo Multiclasse
+headings: intro
+score: 19.28
+text:
+---
+razza: Nano
+classe1: Bardo
+classe1_max: 3
+classe2: Vagabondo
+classe2_max: 2
+classe3: Mago
+classe3_max: 1
+path_talenti: z_GV/Talenti
+includi_generali: true
+---
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-talenti-generali-addestramento-in-un-armatura-esotica-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Talenti\Generali\Addestramento in un’armatura esotica.md
+title: Addestramento in un’armatura esotica
+headings: intro
+score: 18.12
+text:
+---
+name: Addestramento in un’armatura esotica
+type: Talento
+class: Generali
+level: 1
+cost: 5
+prerequisites: [[Addestramento in un’armatura dello stesso gruppo]]
+---
+
+**Descrizione**
+Acquisisce l’addestramento in un’armatura esotica
+
+
+### CHUNK c-users-cristiano-documents-obsidian-d-d-d-d-z-gv-incantesimi-evocazione-evoca-mostri-ii-md-0000
+source_path: C:\Users\Cristiano\Documents\Obsidian\D&D\D&D\z_GV\Incantesimi\Evocazione\Evoca mostri II.md
+title: Evoca mostri II
+headings: intro
+score: 16.80
+text:
+---
+name: Evoca mostri II
+type: Incantesimo
+class: Mago
+level: 4
+cost: 1
+school: Evocazione
+descrittori: evocazione
+componenti: V, S
+azioni: "standard: il personaggio assegna una nuova azione all’evocazione"
+area: distanza 10
+durata: mantenere minore
+recupero: standard
+---
+**Scuola**: Evocazione
+**Descrittori**: evocazione
+**Componenti**: V, S
+**Azioni**: standard: il personaggio assegna una nuova azione all’evocazione
+**Area**: distanza 10
+**Durata**: mantenere minore
+**Recupero**: standard
+
+**Descrizione**
+-
+
+*come l’incantesimo Evoca mostri I con la differenza che il mostro sarà di livello 2 e avrà un totale di tre abilità a scelta tra quelle degli incantesimi precedenti e le seguenti:
+
+- Movimento alternativo: il mostro può aggiungere un tipo di movimento tra volare 3, nuotare 4, scavare 2, scalare 4.
+
+- Descrittore particolare: uno degli attacchi ha un descrittore ed un danno speciale(Fuoco danno incrementato di 2, Freddo rallentato 2 continuato (T), Acido 2 danni continuati (T), Fulmine frastorna 1 round, Veleno 3 danni continuati (T), Forza spinge 1, Necrotico rende scosso 1 continuato (T))
+
+- Bonus innato: può aggiungere due punti tra attacchi e difese (non sulla stessa)*
+
+---
+Vincoli:- usa il corpus fornito come base primaria- se manca informazione, dichiaralo- distingui osservazioni, inferenze e proposte- cita file, heading o chunk quando utile- proponi modifiche operative, non solo teoria astratta

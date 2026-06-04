@@ -35,7 +35,8 @@
   },
   "providers": {
     "openrouter": {
-      "models_api": true
+      "models_api": true,
+      "base_url": "https://openrouter.ai/api/v1"
     },
     "gemini": {
       "use_generate_content": true,
@@ -49,13 +50,13 @@
     }
   },
   "run": {
-    "question": "Proponi una revisione del sistema di magia per ridurre gli exploit ai livelli medi mantenendo la fantasy di potenza.",
+    "question": "Proponi una soluzione alternativa alla gestione della CA ( Classe Armatura) essendo tra tutte le difese l'unica che non sale.",
     "max_workers": 2
   },
   "judge": {
-    "enabled": false,
+    "enabled": true,
     "provider": "nvidia",
-    "model": "deepseek/deepseek-r1"
+    "model": "nvidia/nemotron-3-super-120b-a12b"
   },
   "targets": [
     {
@@ -65,7 +66,7 @@
       "temperature": 0.3,
       "max_tokens": 1024,
       "enabled": true,
-      "label": "or-rules"
+      "label": "nim-rules"
     },
     {
       "provider": "nvidia",
@@ -74,7 +75,7 @@
       "temperature": 0.3,
       "max_tokens": 16384,
       "enabled": true,
-      "label": "nim-rules"
+      "label": "nim-rules-2"
     },
     {
       "provider": "nvidia",
@@ -94,6 +95,15 @@
       "enabled": true,
       "label": "nim-gm"
     },    
+    {
+      "provider": "nvidia",
+      "model": "meta/nemotron-3-super-120b-a12b",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 1024,
+      "enabled": true,
+      "label": "or-rules"
+    },
     {
       "provider": "openrouter",
       "model": "openrouter/free",

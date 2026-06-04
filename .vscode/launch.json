@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Ask_GV CLI",
+      "name": "Ask_GV CLI da files",
       "type": "debugpy",
       "request": "launch",
       "module": "ask_gv.cli",
@@ -12,6 +12,20 @@
         "config.json",
         "--files",
         "C:\\Users\\Cristiano\\Documents\\Obsidian\\D&D\\D&D\\z_GV"
+      ],
+      "console": "integratedTerminal"
+    },
+     {
+      "name": "Ask_GV CLI da cache",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ask_gv.cli",
+      "cwd": "D:\\Progetti\\Ask_GV",
+      "args": [
+        "--config",
+        "config.json",
+        "--cache-dir",
+        "output\\cache\\20260604-155221-files-batch"
       ],
       "console": "integratedTerminal"
     }

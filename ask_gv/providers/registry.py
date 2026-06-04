@@ -46,6 +46,12 @@ def extract_provider_text(provider: str, raw: Dict[str, Any]) -> str:
         return extract_openai_like_text(raw)
     raise RuntimeError(f"Provider non supportato per extract text: {provider}")
 
+def provider_http_options(settings: Dict[str, Any], provider: str) -> Tuple[Any, int, float]:
+    pcfg = provider_settings(settings, provider)
+    timeout = pcfg.get('timeout')
+    retries = int(pcfg.get('retries', 2))
+    backoff = float(pcfg.get('backoff', 1.5))
+    return timeout, retries, backoff
 
 def call_provider(
     provider: str,
@@ -58,38 +64,88 @@ def call_provider(
 ) -> Tuple[Dict[str, Any], str]:
     api_key = provider_api_key(provider)
     pcfg = provider_settings(settings, provider)
+    timeout, retries, backoff = provider_http_options(settings, provider)
 
-    if provider == "openrouter":
-        raw = call_openrouter(model, api_key, messages, temperature, max_tokens, response_format=response_format)
-    elif provider == "perplexity":
-        raw = call_perplexity(model, api_key, messages, temperature, max_tokens)
-    elif provider == "nvidia":
-        base_url = pcfg.get("base_url", "https://integrate.api.nvidia.com/v1")
-        raw = call_nvidia(model, api_key, messages, base_url, temperature, max_tokens, response_format=response_format)
-    elif provider == "gemini":
+    if provider == 'openrouter':
+        raw = call_openrouter(
+            model,
+            api_key,
+            messages,
+            base_url,
+            temperature,
+            max_tokens,
+            response_format=response_format,
+            timeout=timeout,
+            retries=retries,
+            backoff=backoff,
+        )
+    elif provider == 'perplexity':
+        raw = call_perplexity(
+            model,
+            api_key,
+            messages,
+            temperature,
+            max_tokens,
+            timeout=timeout,
+            retries=retries,
+            backoff=backoff,
+        )
+    elif provider == 'nvidia':
+        base_url = pcfg.get('base_url', 'https://integrate.api.nvidia.com/v1')
+        raw = call_nvidia(
+            model,
+            api_key,
+            messages,
+            base_url,
+            temperature,
+            max_tokens,
+            response_format=response_format,
+            timeout=timeout,
+            retries=retries,
+            backoff=backoff,
+        )
+    elif provider == 'gemini':
         if len(messages) < 2:
-            raise RuntimeError("Messaggi Gemini insufficienti")
-        system_prompt = messages[0].get("content", "")
-        user_prompt = messages[-1].get("content", "")
-        raw = call_gemini_generate_content(model, api_key, system_prompt, user_prompt, temperature)
+            raise RuntimeError('Messaggi Gemini insufficienti')
+        system_prompt = messages[0].get('content', '')
+        user_prompt = messages[-1].get('content', '')
+        raw = call_gemini_generate_content(
+            model,
+            api_key,
+            system_prompt,
+            user_prompt,
+            temperature,
+            timeout=timeout,
+            retries=retries,
+            backoff=backoff,
+        )
     else:
-        raise RuntimeError(f"Provider non supportato: {provider}")
+        raise RuntimeError(f'Provider non supportato: {provider}')
 
     return raw, extract_provider_text(provider, raw)
 
-
 def call_gemini_summary_with_optional_file(
     model: str,
+    settings: Dict[str, Any],
     summary_prompt: str,
     user_prompt: str,
     gemini_use_files: bool = False,
     consolidated_path: Optional[Path] = None,
 ) -> Tuple[Dict[str, Any], str]:
-    api_key = provider_api_key("gemini")
+    api_key = provider_api_key('gemini')
+    timeout, retries, backoff = provider_http_options(settings, 'gemini')
+
     if gemini_use_files and consolidated_path is not None:
-        up = call_gemini_upload_file(api_key, consolidated_path, "text/markdown")
-        file_uri = up.get("file", {}).get("uri") or up.get("uri")
-        mime = up.get("file", {}).get("mimeType", "text/markdown")
+        up = call_gemini_upload_file(
+            api_key,
+            consolidated_path,
+            'text/markdown',
+            timeout=timeout,
+            retries=retries,
+            backoff=backoff,
+        )
+        file_uri = up.get('file', {}).get('uri') or up.get('uri')
+        mime = up.get('file', {}).get('mimeType', 'text/markdown')
         if file_uri:
             raw = call_gemini_generate_with_file_uri(
                 model,
@@ -97,8 +153,20 @@ def call_gemini_summary_with_optional_file(
                 summary_prompt,
                 file_uri,
                 mime,
-                "Analizza il file allegato e restituisci JSON valido secondo lo schema richiesto.",
+                'Analizza il file allegato e restituisci JSON valido secondo lo schema richiesto.',
+                timeout=timeout,
+                retries=retries,
+                backoff=backoff,
             )
             return raw, extract_gemini_text(raw)
-    raw = call_gemini_generate_content(model, api_key, summary_prompt, user_prompt)
+
+    raw = call_gemini_generate_content(
+        model,
+        api_key,
+        summary_prompt,
+        user_prompt,
+        timeout=timeout,
+        retries=retries,
+        backoff=backoff,
+    )
     return raw, extract_gemini_text(raw)
