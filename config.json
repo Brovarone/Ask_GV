@@ -59,6 +59,71 @@
     "model": "nvidia/nemotron-3-super-120b-a12b"
   },
   "targets": [
+     {
+      "provider": "nvidia",
+      "model": "z-ai/glm-5.1",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 16384,
+      "enabled": true,
+      "label": "nim-rules"
+    },
+    {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m2.7",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 8192,
+      "enabled": true,
+      "label": "nim-rules"
+    },
+    {
+      "provider": "nvidia",
+      "model": "mistralai/mistral-nemotron",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 4096,
+      "enabled": true,
+      "label": "nim-rules"
+    },
+    {
+      "provider": "nvidia",
+      "model": "meta/nemotron-3-super-120b-a12b",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 1024,
+      "enabled": true,
+      "label": "or-rules"
+    },
+    {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "profile": "narrative_designer",
+      "temperature": 0.5,
+      "max_tokens": 1800,
+      "enabled": false,
+      "label": "or-narrative"
+    }
+  ],
+  "targets_list": [
+     {
+      "provider": "nvidia",
+      "model": "z-ai/glm-5.1",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 16384,
+      "enabled": true,
+      "label": "nim-rules"
+    },
+    {
+      "provider": "nvidia",
+      "model": "minimaxai/minimax-m2.7",
+      "profile": "rules_lawyer",
+      "temperature": 0.3,
+      "max_tokens": 8192,
+      "enabled": true,
+      "label": "nim-rules"
+    },
     {
       "provider": "nvidia",
       "model": "meta/llama-3.1-70b-instruct",
