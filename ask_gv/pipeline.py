@@ -37,21 +37,18 @@ def build_knowledge_pack(documents: List[SourceDocument], cache_dir: Path, setti
         chunks.extend(chunk_document(d, chunk_size, overlap))
 
     summary_cfg  = settings.get('summary', {})
-    try:
-        summary = generate_summary(
-            provider=summary_cfg.get('provider', 'gemini'),
-            model=summary_cfg.get('model', 'gemini-2.5-pro'),
-            documents=documents,
-            settings=settings,
-            work_dir=cache_dir,
-        )
-        log.info(
-            'summary generated',
-            extra={'event': 'summary_generated', 'provider': summary_cfg .get('provider', 'gemini'), 'model': summary_cfg .get('model', 'gemini-2.5-pro')},
-        )
-    except Exception as e:
-        log.exception('summary generation failed, fallback in use', extra={'event': 'summary_failed'})
-        summary = fallback_summary(documents, e)
+    
+    summary = generate_summary(
+        provider=summary_cfg.get('provider', 'gemini'),
+        model=summary_cfg.get('model', 'gemini-2.5-pro'),
+        documents=documents,
+        settings=settings,
+        work_dir=cache_dir,
+    )
+    log.info(
+        'summary generated',
+        extra={'event': 'summary_generated', 'provider': summary_cfg .get('provider', 'gemini'), 'model': summary_cfg .get('model', 'gemini-2.5-pro')},
+    )           
 
     # Statistics
     stats = {

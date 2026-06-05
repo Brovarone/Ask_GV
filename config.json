@@ -24,7 +24,9 @@
   },
   "summary": {
     "provider": "nvidia",
-    "model": "meta/llama-3.1-70b-instruct"
+    "model": "meta/llama-3.1-70b-instruct",
+    "temperature": 0.3,
+    "max_tokens": 16384  
   },
   "retrieval": {
     "chunk_size": 2200,
