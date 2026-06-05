@@ -5,7 +5,7 @@ import tempfile
 from pathlib import Path
 from typing import Iterable, List
 from .models import SourceDocument
-from .utils import normalize_markdown, read_text, sha256_text, first_heading_or_filename, extract_headings
+from .utils import normalize_markdown, read_text, compute_sha256, first_heading_or_filename, extract_headings
 
 def iter_files_recursive(base: Path, ignore_patterns: List[str]) -> Iterable[Path]:
     for p in base.rglob("*"):
@@ -48,7 +48,7 @@ def load_documents_from_repo(repo_url: str, ignore_patterns: List[str]) -> List[
             content = normalize_markdown(read_text(f))
             if not content:
                 continue
-            docs.append(SourceDocument(rel, first_heading_or_filename(rel, content), content, sha256_text(content), len(content), extract_headings(content)))
+            docs.append(SourceDocument(rel, first_heading_or_filename(rel, content), content, compute_sha256(content), len(content), extract_headings(content)))
         return docs
 
 def load_documents_from_files(files: List[str]) -> List[SourceDocument]:
@@ -57,5 +57,5 @@ def load_documents_from_files(files: List[str]) -> List[SourceDocument]:
         content = normalize_markdown(read_text(f))
         if not content:
             continue
-        docs.append(SourceDocument(str(f), first_heading_or_filename(str(f), content), content, sha256_text(content), len(content), extract_headings(content)))
+        docs.append(SourceDocument(str(f), first_heading_or_filename(str(f), content), content, compute_sha256(content), len(content), extract_headings(content)))
     return docs

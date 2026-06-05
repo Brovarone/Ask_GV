@@ -79,10 +79,10 @@
     },
     {
       "provider": "nvidia",
-      "model": "mistralai/mistral-nemotron",
+      "model": "mistralai/mistral-medium-3.5-128b",
       "profile": "rules_lawyer",
       "temperature": 0.3,
-      "max_tokens": 4096,
+      "max_tokens": 16384,
       "enabled": true,
       "label": "nim-rules"
     },

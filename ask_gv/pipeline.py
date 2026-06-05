@@ -13,56 +13,67 @@ from .retrieval import build_keyword_counter, chunk_document, compose_context, r
 from .summary import fallback_summary, generate_summary
 from .utils import append_jsonl, ensure_dir, now_ts, safe_json_loads, slugify, write_json, write_text
 
-def build_knowledge_pack(
-    documents: List[SourceDocument],
-    cache_dir: Path,
-    settings: Dict[str, Any],
-) -> Dict[str, Any]:
-    log = get_logger(__name__, 'pipeline')
-    log.info(
-        'knowledge pack start',
-        extra={'event': 'knowledge_pack_start', 'count': len(documents), 'cache_dir': str(cache_dir)},
-    )
-    ensure_dir(cache_dir)
-    r = settings.get('retrieval', {})
-    chunk_size = r.get('chunk_size', DEFAULT_CHUNK_SIZE)
-    overlap = r.get('chunk_overlap', DEFAULT_CHUNK_OVERLAP)
+def build_knowledge_pack(documents: List[SourceDocument], cache_dir: Path, settings: Dict[str, Any]) -> Dict[str, Any]:
+    """Build the knowledge pack from documents, create chunks, generate summary, and write intermediate files.
 
+    Args:
+        documents: List of SourceDocument objects.
+        cache_dir: Path where intermediate files (documents.json, chunks.json, etc.) will be stored.
+        settings: Configuration dictionary containing retrieval and summary options.
+
+    Returns:
+        A dictionary with keys 'documents', 'chunks', 'summary', 'stats', and 'manifest'.
+    """
+    log = get_logger(__name__, "pipeline")
+    log.info("knowledge pack start", extra={"event": "knowledge_pack_start", "count": len(documents), "cache_dir": str(cache_dir)})
+    ensure_dir(cache_dir)
+
+    # Chunking
+    retrieval_cfg = settings.get("retrieval", {})
+    chunk_size = retrieval_cfg.get('chunk_size', DEFAULT_CHUNK_SIZE)
+    overlap = retrieval_cfg.get('chunk_overlap', DEFAULT_CHUNK_OVERLAP)
     chunks: List[Chunk] = []
     for d in documents:
         chunks.extend(chunk_document(d, chunk_size, overlap))
 
-    scfg = settings.get('summary', {})
+    summary_cfg  = settings.get('summary', {})
     try:
         summary = generate_summary(
-            provider=scfg.get('provider', 'gemini'),
-            model=scfg.get('model', 'gemini-2.5-pro'),
+            provider=summary_cfg .get('provider', 'gemini'),
+            model=summary_cfg .get('model', 'gemini-2.5-pro'),
             documents=documents,
             settings=settings,
-            gemini_use_files=bool(scfg.get('gemini_use_files_api', False)),
+            gemini_use_files=bool(summary_cfg .get('gemini_use_files_api', False)),
             work_dir=cache_dir,
         )
         log.info(
             'summary generated',
-            extra={'event': 'summary_generated', 'provider': scfg.get('provider', 'gemini'), 'model': scfg.get('model', 'gemini-2.5-pro')},
+            extra={'event': 'summary_generated', 'provider': summary_cfg .get('provider', 'gemini'), 'model': summary_cfg .get('model', 'gemini-2.5-pro')},
         )
     except Exception as e:
         log.exception('summary generation failed, fallback in use', extra={'event': 'summary_failed'})
         summary = fallback_summary(documents, e)
 
+    # Statistics
     stats = {
         'documents': len(documents),
         'chunks': len(chunks),
         'total_chars': sum(d.chars for d in documents),
         'keywords_top': list(build_keyword_counter(documents).items())[:150],
     }
-    manifest = {'created_at': now_ts(), 'documents': len(documents), 'chunks': len(chunks)}
 
+    # Manifest
+    manifest = {'created_at': now_ts(), 
+                'documents': len(documents), 
+                'chunks': len(chunks)}
+
+    # Write intermediate files
     write_json(cache_dir / 'documents.json', [d.__dict__ for d in documents])
     write_json(cache_dir / 'chunks.json', [c.__dict__ for c in chunks])
     write_json(cache_dir / 'summary.json', summary)
     write_json(cache_dir / 'stats.json', stats)
     write_json(cache_dir / 'manifest.json', manifest)
+
     write_text(
         cache_dir / "corpus_full.md",
         "\n\n".join([f"# FILE: {d.path}\n\n{d.content}" for d in documents]),
@@ -70,7 +81,6 @@ def build_knowledge_pack(
 
     log.info("knowledge pack completed", extra={"event": "knowledge_pack_completed", "count": len(chunks), "cache_dir": str(cache_dir)})
     return {"documents": documents, "chunks": chunks, "summary": summary, "stats": stats, "manifest": manifest}
-
 
 def load_knowledge_pack(cache_dir: Path) -> Dict[str, Any]:
     documents = [SourceDocument(**x) for x in json.loads((cache_dir / "documents.json").read_text(encoding="utf-8"))]
@@ -93,7 +103,7 @@ def build_user_prompt(question: str, summary: Dict[str, Any], chunks: List[Chunk
         f"Materiale di riferimento:{context}"
         "Vincoli:"
         "- usa il corpus fornito come base primaria"
-        "- se manca informazione, dichiaralo"
+        "- se manca qualche informazione, dichiaralo"
         "- distingui osservazioni, inferenze e proposte"
         "- cita file, heading o chunk quando utile"
         "- proponi modifiche operative, non solo teoria astratta"

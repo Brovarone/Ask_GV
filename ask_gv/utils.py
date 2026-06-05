@@ -24,10 +24,18 @@ def append_jsonl(path: Path, data: Dict[str, Any]) -> None:
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="ignore")
 
-def sha256_text(text: str) -> str:
+def compute_sha256(text: str) -> str:
+    """Return the SHA‑256 hex digest of *text* (ignores encoding errors)."""
     return hashlib.sha256(text.encode("utf-8", errors="ignore")).hexdigest()
 
 def slugify(value: str) -> str:
+    """Convert *value* to a slug suitable for filenames.
+
+    Steps:
+        1. Lower‑case and replace any non‑alphanumeric characters with hyphens.
+        2. Collapse consecutive hyphens and strip leading/trailing hyphens.
+        3. Return ``run`` if the result is empty.
+    """
     value = re.sub(r"[^a-z0-9]+", "-", value.lower().strip())
     return re.sub(r"-+", "-", value).strip("-") or "run"
 
@@ -35,7 +43,8 @@ def now_ts() -> str:
     return time.strftime("%Y%m%d-%H%M%S")
 
 def normalize_markdown(text: str) -> str:
-    text = text.replace("\r\n", "\n").replace("\r", "\n").replace("\t", "    ")
+    """Normalize Markdown line endings and collapse multiple blank lines."""
+    text = text.replace("\\r\\n", "\\n").replace("\\r", "\\n").replace("\\t", " ")
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 def trim_text(text: str, max_chars: int) -> str:
