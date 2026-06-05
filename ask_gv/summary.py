@@ -19,33 +19,51 @@ def build_summary_corpus(documents: List[SourceDocument], max_chars: int = DEFAU
         current += len(block)
     return "\n".join(blocks).strip()
 
+def build_summary_messages(provider: str, user_prompt: str, settings: Dict[str, Any]) -> List[dict]:
+    """
+    Costruisce la lista di messaggi da inviare a qualunque provider.
+    Il formato è lo stesso di `call_provider` (system + user).
+    """
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user_prompt},
+    ]
 
 def generate_summary(
     provider: str,
     model: str,
     documents: List[SourceDocument],
     settings: Dict[str, Any],
-    gemini_use_files: bool = False,
     work_dir: Optional[Path] = None,
 ) -> Dict[str, Any]:
+    """
+    Genera un riassunto tecnico a partire da una lista di documenti Markdown.
+    Il flusso è:
+        1. Costruisci il prompt generico.
+        2. Crea la lista di messaggi con ``build_summary_messages``.
+        3. Chiama ``call_provider`` (già gestisce Gemini, OpenAI, NVIDIA, ecc.).
+        4. Restituisci lo stesso schema di risposta usato da `fallback_summary`.
+    """
+    # 1️⃣  Costruisci il prompt generico (non più concatenato al corpo del documento)
     corpus = build_summary_corpus(documents)
     user_prompt = "Analizza il seguente corpus Markdown relativo a un gioco di ruolo tabletop e costruisci un summary tecnico." + corpus
 
-    if provider == "gemini":
-        consolidated = None
-        if gemini_use_files and work_dir is not None:
-            consolidated = work_dir / "gemini_summary_corpus.md"
-            write_text(consolidated, corpus)
-        raw, text = call_gemini_summary_with_optional_file(model, SUMMARY_PROMPT, user_prompt, gemini_use_files, consolidated)
-        return safe_json_loads(text) or {"summary_text": text, "raw": raw}
+    # 2️⃣  Prepara i messaggi da inviare al modello
+    messages = build_summary_messages(provider, user_prompt, settings)
 
-    messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": user_prompt},
-    ]
-    raw, text = call_provider(provider, model, messages, settings, temperature=0.2, max_tokens=1024, response_format={"type": "json_object"})
+    # 3️⃣  Chiama il provider con i parametri presenti nella configurazione
+    raw, text = call_provider(
+        provider,
+        model,
+        messages,
+        settings,
+        temperature=settings.get("temperature", 0.2),
+        max_tokens=settings.get("max_tokens", 1024),
+        response_format={"type": "json_object"},
+    )
+
+    # 4️⃣  Normalizza la risposta (stessa logica di prima)
     return safe_json_loads(text) or {"summary_text": text, "raw": raw}
-
 
 def fallback_summary(documents: List[SourceDocument], error: Exception) -> Dict[str, Any]:
     return {

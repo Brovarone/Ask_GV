@@ -1,7 +1,7 @@
 from __future__ import annotations
 import argparse
 from pathlib import Path
-from .config import load_config, targets_from_config
+from .config import load_config, targets_from_config, validate_targets_and_summary
 from .defaults import DEFAULT_IGNORE_PATTERNS
 from .ingest import load_documents_from_files, load_documents_from_repo
 from .observability import get_logger, setup_logging, shutdown_logging
@@ -33,8 +33,10 @@ def parse_args():
 
 def main() -> int:
     args = parse_args()
-    load_dotenv(Path(__file__).resolve().parent / ".env")
+    load_dotenv(Path(__file__).resolve().parent / ".env")    
     cfg = load_config(Path(args.config))
+    if not validate_targets_and_summary(cfg):
+        raise ValueError("Configurazione non valida")  # se preferisci interrompere        
     output_root = ensure_dir(Path(args.output_root))
     run_dir, default_cache_dir = create_run_dirs(output_root, source_label(args))
     setup_logging(run_dir / "logs", run_dir.name)

@@ -39,11 +39,10 @@ def build_knowledge_pack(documents: List[SourceDocument], cache_dir: Path, setti
     summary_cfg  = settings.get('summary', {})
     try:
         summary = generate_summary(
-            provider=summary_cfg .get('provider', 'gemini'),
-            model=summary_cfg .get('model', 'gemini-2.5-pro'),
+            provider=summary_cfg.get('provider', 'gemini'),
+            model=summary_cfg.get('model', 'gemini-2.5-pro'),
             documents=documents,
             settings=settings,
-            gemini_use_files=bool(summary_cfg .get('gemini_use_files_api', False)),
             work_dir=cache_dir,
         )
         log.info(
