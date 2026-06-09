@@ -10,13 +10,20 @@ from .reporting import save_outputs
 from .utils import append_jsonl, ensure_dir, write_json
 from dotenv import load_dotenv
 
-def source_label(args) -> str:
+def source_label(args, cfg) -> str:
+    run_label = str(cfg.get("run", {}).get("label", "")).strip()
+    if run_label:
+        return run_label
+
     if args.repo:
         return Path(args.repo.rstrip("/")).name.replace(".git", "") or "repo"
+
     if args.files:
         return "files-batch"
+
     if args.cache_dir:
         return Path(args.cache_dir).name
+
     return "run"
 
 def parse_args():
@@ -28,7 +35,7 @@ def parse_args():
     p.add_argument("--config", required=True)
     p.add_argument("--question")
     p.add_argument("--build-only", action="store_true")
-    p.add_argument("--output-root", default="output")
+    p.add_argument("--output-root", default="output")    
     return p.parse_args()
 
 def main() -> int:
@@ -38,7 +45,7 @@ def main() -> int:
     if not validate_targets_and_summary(cfg):
         raise ValueError("Configurazione non valida")  # se preferisci interrompere        
     output_root = ensure_dir(Path(args.output_root))
-    run_dir, default_cache_dir = create_run_dirs(output_root, source_label(args))
+    run_dir, default_cache_dir = create_run_dirs(output_root, source_label(args, cfg))
     setup_logging(run_dir / "logs", run_dir.name)
     log = get_logger(__name__, "cli")
     log.info("cli started", extra={"event": "cli_started", "run_dir": str(run_dir)})
@@ -54,7 +61,12 @@ def main() -> int:
             if not args.repo and not args.files:
                 raise SystemExit("Errore: specifica --repo oppure --files oppure --cache-dir")
             log.info("loading documents", extra={"event": "documents_loading", "path": args.repo or ",".join(args.files or [])})
-            docs = load_documents_from_repo(args.repo, cfg.get("input", {}).get("ignore_patterns", DEFAULT_IGNORE_PATTERNS)) if args.repo else load_documents_from_files(args.files or [])
+            ignore_patterns = cfg.get("input", {}).get("ignore_patterns", DEFAULT_IGNORE_PATTERNS)
+            docs = (
+                load_documents_from_repo(args.repo, ignore_patterns)
+                if args.repo
+                else load_documents_from_files(args.files or [], ignore_patterns)
+                )
             if not docs:
                 raise SystemExit("Nessun documento Markdown trovato.")
             cache_dir = default_cache_dir

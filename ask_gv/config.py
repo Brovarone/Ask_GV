@@ -1,6 +1,6 @@
 from __future__ import annotations
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 from .models import Target
 from .utils import read_text
 import json
@@ -82,14 +82,50 @@ def targets_from_config(cfg: Dict[str, Any]) -> List[Target]:
     for t in cfg.get("targets", []):
         if not t.get("enabled", True):
             continue        
+        
+        resolved = resolve_model_params(
+            cfg,
+            provider=t["provider"],
+            model=t["model"],
+            overrides=t,
+            default_temperature=0.4,
+            default_max_tokens=1024,
+        )
 
         out.append(Target(
             provider=t["provider"],
             model=t["model"],
             profile=t.get("profile", "systems_designer"),
-            temperature=t.get("temperature", 0.4),
-            max_tokens=t.get("max_tokens"),
+            temperature=resolved["temperature"],
+            max_tokens=resolved["max_tokens"],
             enabled=t.get("enabled", True),
             label=t.get("label"),
         ))
     return out
+
+def resolve_model_params(
+    cfg: Dict[str, Any],
+    provider: str,
+    model: str,
+    overrides: Optional[Dict[str, Any]] = None,
+    default_temperature: float = 0.4,
+    default_max_tokens: Optional[int] = None,
+) -> Dict[str, Any]:
+    overrides = overrides or {}
+
+    model_cfg = {}
+    for item in cfg.get("models", []):
+        if item.get("provider") == provider and item.get("model") == model:
+            model_cfg = item
+            break
+
+    return {
+        "temperature": overrides.get(
+            "temperature",
+            model_cfg.get("temperature", default_temperature),
+        ),
+        "max_tokens": overrides.get(
+            "max_tokens",
+            model_cfg.get("max_tokens", default_max_tokens),
+        ),
+    }

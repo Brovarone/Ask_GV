@@ -19,14 +19,18 @@
       "*.zip",
       "*.7z",
       "*.mp3",
-      "*.mp4"
+      "*.mp4",
+      "GV_fonti/*",
+      "GV_fonti_ok/*",
+      "z_tools/*",
+      "*.py",
+      "*.bat",
+      "*.ps1"
     ]
   },
   "summary": {
     "provider": "nvidia",
-    "model": "meta/llama-3.1-70b-instruct",
-    "temperature": 0.3,
-    "max_tokens": 16384  
+    "model": "mistralai/mistral-medium-3.5-128b"
   },
   "retrieval": {
     "chunk_size": 2200,
@@ -51,13 +55,15 @@
     }
   },
   "run": {
-    "question": "Proponi una soluzione alternativa alla gestione della CA ( Classe Armatura) essendo tra tutte le difese l'unica che non sale.",
+    "label": "Stili Vagabondo",
+    "question": "Proponi almeno due rami alternativi per gli stili del vagabondo in aggiunta a quelli esitenti. Considera sia il vagabondo puro che il multiclasse o infarinato.",
+    "Nold_question": "Proponi una soluzione alternativa alla gestione della CA ( Classe Armatura) essendo tra tutte le difese l'unica che non sale.",
     "max_workers": 2
   },
   "judge": {
-    "enabled": true,
+    "enabled": false,
     "provider": "nvidia",
-    "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning"
+    "model": "deepseek-ai/deepseek-v4-flash"
   },
   "targets": [    
      {
@@ -70,23 +76,23 @@
     {
       "provider": "nvidia",
       "model": "minimaxai/minimax-m2.7",
-      "profile": "rules_lawyer",      
+      "profile": "systems_designer",      
       "enabled": true,
-      "label": "nim-rules"
+      "label": "nim-designer"
     },
     {
       "provider": "nvidia",
       "model": "mistralai/mistral-medium-3.5-128b",
-      "profile": "rules_lawyer",      
+      "profile": "gm_experience",      
       "enabled": true,
-      "label": "nim-rules"
+      "label": "nim-gm_experience"
     },
     {
       "provider": "nvidia",
       "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
-      "profile": "rules_lawyer",      
+      "profile": "narrative_designer",      
       "enabled": true,
-      "label": "or-rules"
+      "label": "nim-narrative"
     }
   ],
   "models": [
@@ -111,7 +117,7 @@
     {
       "provider": "nvidia",
       "model": "mistralai/mistral-medium-3.5-128b",
-      "temperature": 0.3,
+      "temperature": 0.7,
       "max_tokens": 16384     
     },
     {
@@ -137,6 +143,12 @@
       "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
       "temperature": 0.3,
       "max_tokens": 65536
+    },
+    {
+      "provider": "nvidia",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "temperature": 0.3,
+      "max_tokens": 16384
     },
     {
       "provider": "openrouter",

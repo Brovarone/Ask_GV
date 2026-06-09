@@ -6,12 +6,29 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from .defaults import DEFAULT_CHUNK_OVERLAP, DEFAULT_CHUNK_SIZE, DEFAULT_CONTEXT_CHARS, DEFAULT_MAX_WORKERS, DEFAULT_TOP_K, PROFILE_PRESETS, SYSTEM_PROMPT, JUDGE_SYSTEM_PROMPT
 from .models import Answer, Chunk, SourceDocument, Target
+from .config import resolve_model_params
 from .observability import get_logger
 from .providers.base import ProviderTimeoutError, ProviderRateLimitError, ProviderHTTPError
 from .providers.registry import call_provider
 from .retrieval import build_keyword_counter, chunk_document, compose_context, rank_chunks
 from .summary import fallback_summary, generate_summary
 from .utils import append_jsonl, ensure_dir, now_ts, safe_json_loads, slugify, write_json, write_text
+
+def _summary_has_content(summary: Dict[str, Any]) -> bool:
+    if not isinstance(summary, dict):
+        return False
+
+    lowered = {str(k).strip().lower(): v for k, v in summary.items()}
+
+    text = ""
+    for key in ("summary_text", "summary", "text", "content", "graja"):
+        value = lowered.get(key)
+        if isinstance(value, str) and value.strip():
+            text = value.strip()
+            break
+    keywords = lowered.get("keywords")
+    has_keywords = isinstance(keywords, list) and any(str(x).strip() for x in keywords)
+    return bool(text or has_keywords)
 
 def build_knowledge_pack(documents: List[SourceDocument], cache_dir: Path, settings: Dict[str, Any]) -> Dict[str, Any]:
     """Build the knowledge pack from documents, create chunks, generate summary, and write intermediate files.
@@ -45,6 +62,12 @@ def build_knowledge_pack(documents: List[SourceDocument], cache_dir: Path, setti
         settings=settings,
         work_dir=cache_dir,
     )
+    if not _summary_has_content(summary):
+        log.error(
+            "summary is empty, aborting knowledge pack",
+            extra={"event": "summary_empty_abort"}
+        )
+        raise RuntimeError("Summary vuota o non valida: esecuzione interrotta")
     log.info(
         'summary generated',
         extra={'event': 'summary_generated', 'provider': summary_cfg .get('provider', 'gemini'), 'model': summary_cfg .get('model', 'gemini-2.5-pro')},
@@ -177,13 +200,21 @@ def run_judge(question: str, answers: List[Answer], kp: Dict[str, Any], settings
     judge_user = f"Domanda originale:{question} Corpus rilevante:{context} Risposte candidate:{candidate_blocks}"
     write_text(run_dir / "prompts" / "judge_prompt.txt", judge_user)
     try:
+        resolved = resolve_model_params(
+            settings,
+            provider=provider,
+            model=model,
+            overrides=j,
+            default_temperature=0.4,
+            default_max_tokens=1600,
+        )
         raw, text = call_provider(
             provider,
             model,
             openai_style_messages(judge_user, JUDGE_SYSTEM_PROMPT),
             settings,
-            temperature=0.2,
-            max_tokens=1600,
+            temperature=resolved["temperature"],
+            max_tokens=resolved["max_tokens"],
             response_format={"type": "json_object"},
         )
         parsed = safe_json_loads(text) or {"raw_text": text, "raw": raw}
